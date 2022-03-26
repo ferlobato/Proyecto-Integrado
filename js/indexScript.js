@@ -8,7 +8,7 @@ window.onload=inicio;
 
 function inicio(){
     // Configuración inicial y eventos:
-    acceso();
+    //acceso();
     document.getElementById("registro").disabled=true;
     document.getElementById("rNombre").addEventListener('blur',validarTextoNom);
     document.getElementById("rNombre").addEventListener('input',validarTextoNom);
@@ -16,7 +16,7 @@ function inicio(){
     document.getElementById("rContraseña").addEventListener('input',evaluarPass);
     document.getElementById("rContraseña2").addEventListener('focus',evaluarPass2);
     document.getElementById("rContraseña2").addEventListener('input',evaluarPass2); 
-    document.getElementById("fRegistro").addEventListener('submit',registro);
+    //document.getElementById("fRegistro").addEventListener('submit',registro);
     
 }
 
@@ -183,7 +183,7 @@ function evaluarTodo(){ // Comprobando la validez de todos los campos
             Funciones registro y acceso de usuarios
 Los usuarios se crearán de forma artificial con LocalStorage
 ***************************************************/
-function registro(){
+/*function registro(){
     var nuevoUsuario = { 
         'nombre' : document.getElementById("rNombre").value, 
         'mail' : document.getElementById("rMail").value, 
@@ -206,7 +206,7 @@ function acceso(){
         }
         form.classList.add('was-validated')
     }, false)
-}
+}*/
 
 
 
