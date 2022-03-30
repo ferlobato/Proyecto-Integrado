@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <script src="../js/jquery.min.js"></script>
+    <script src="../js/indexEstadisticas.js"></script>
+    <link rel="stylesheet" href="../fonts/fontawesome-free-5.15.4-web/css/all.min.css">
 </head>
 
 <body class="bg-dark d-flex flex-column min-vh-100">
@@ -52,12 +54,12 @@
         </div>
     </header>
 
-    <div class="container mt-5 mb-5 pb-5">
+    <div class="container mt-4 mb-5 pb-5">
         <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-white">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-white">
                 <?php
                 if (isset($_SESSION['sesion_iniciada'])) {
-                    echo "<h1 class='text-white'>" . $_SESSION["nombre"] . "</h1><br><h4 class='text-white ms-5'>Estadísticas</h4>";
+                    echo "<div class='mb-0 pb-0'><h1 class='text-white'>" . $_SESSION["nombre"] . "</h1><span>" . $_SESSION["mail"] . "</span></div><br><h4 class='text-white ms-5'>Estadísticas</h4>";
                     include "../bd/conexion.php";
 
                     if (mysqli_connect_errno()) {
@@ -82,45 +84,73 @@
                             echo "<tr><td><img class='imgjuego' style='width:200px;height:auto' src='../games/salto/salto.jpg' alt='Salto'></td><td class='p-3'>";
                             echo "<h5>Salto</h5>";
                             echo "<div class=' ms-5'>";
-                            if($t==0){echo "No has jugado todavía<br>";}
-                            else{
-                                if($t==1){echo "Lo has intentado: ".$t." vez<br>";}
-                                else{echo "Lo has intentado: ".$t." veces<br>";}
-                                if($w==1){echo "Llegaste a tu destino: ".$w." vez<br>";}
-                                else{echo "Llegaste a tu destino: ".$w." veces<br>";}
+                            if ($t == 0) {
+                                echo "No has jugado todavía<br>";
+                            } else {
+                                if ($t == 1) {
+                                    echo "Lo has intentado: " . $t . " vez<br>";
+                                } else {
+                                    echo "Lo has intentado: " . $t . " veces<br>";
+                                }
+                                if ($w == 1) {
+                                    echo "Llegaste a tu destino: " . $w . " vez<br>";
+                                } else {
+                                    echo "Llegaste a tu destino: " . $w . " veces<br>";
+                                }
                             }
                             echo "</div>";
                             echo "</td></tr><tr><td><img class='imgjuego' style='width:200px;height:auto' src='../games/kog/kog.jpg' alt='Labyrinth'></td><td class='p-3'>";
                             echo "<h5>Labyrinth</h5>";
                             echo "<div class=' ms-5'>";
-                            if($t2==0){echo "No has jugado todavía<br>";}
-                            else{
-                                if($t2==1){echo "Te has perdido: ".$t2." vez<br>";}
-                                else{echo "Te has perdido: ".$t2." veces<br>";}
-                                if($w2==1){echo "Conseguiste la cápsula: ".$w2." vez<br>";}
-                                else{echo "Conseguiste la cápsula: ".$w2." veces<br>";}
+                            if ($t2 == 0) {
+                                echo "No has jugado todavía<br>";
+                            } else {
+                                if ($t2 == 1) {
+                                    echo "Te has perdido: " . $t2 . " vez<br>";
+                                } else {
+                                    echo "Te has perdido: " . $t2 . " veces<br>";
+                                }
+                                if ($w2 == 1) {
+                                    echo "Conseguiste la cápsula: " . $w2 . " vez<br>";
+                                } else {
+                                    echo "Conseguiste la cápsula: " . $w2 . " veces<br>";
+                                }
                             }
                             echo "</div>";
                             echo "</td></tr><tr><td><img class='imgjuego' style='width:200px;height:auto' src='../games/airh/airh.jpg' alt='Air Hockey'></td><td class='p-3'>";
                             echo "<h5>Air Hockey Alpha</h5>";
                             echo "<div class=' ms-5'>";
-                            if($t3==0){echo "No has jugado todavía<br>";}
-                            else{
-                                if($t3==1){echo "Has jugado: ".$t3." vez<br>";}
-                                else{echo "Has jugado: ".$t3." veces<br>";}
-                                if($w3==1){echo "Ganaste a la máquina: ".$w3." vez<br>";}
-                                else{echo "Ganaste a la máquina: ".$w3." veces<br>";}
+                            if ($t3 == 0) {
+                                echo "No has jugado todavía<br>";
+                            } else {
+                                if ($t3 == 1) {
+                                    echo "Has jugado: " . $t3 . " vez<br>";
+                                } else {
+                                    echo "Has jugado: " . $t3 . " veces<br>";
+                                }
+                                if ($w3 == 1) {
+                                    echo "Ganaste a la máquina: " . $w3 . " vez<br>";
+                                } else {
+                                    echo "Ganaste a la máquina: " . $w3 . " veces<br>";
+                                }
                             }
                             echo "</div>";
                             echo "</td></tr><tr><td><img class='imgjuego' style='width:200px;height:auto' src='../games/ark/ark.jpg' alt='Arkanoid'></td><td class='p-3'>";
                             echo "<h5>Arkanoid</h5>";
                             echo "<div class=' ms-5'>";
-                            if($t4==0){echo "No has jugado todavía<br>";}
-                            else{
-                                if($t4==1){echo "Lo has intentado: ".$t4." vez<br>";}
-                                else{echo "Lo has intentado: ".$t4." veces<br>";}
-                                if($w4==1){echo "Lo conseguiste: ".$w4." vez<br>";}
-                                else{echo "Lo conseguiste: ".$w4." veces<br>";}
+                            if ($t4 == 0) {
+                                echo "No has jugado todavía<br>";
+                            } else {
+                                if ($t4 == 1) {
+                                    echo "Lo has intentado: " . $t4 . " vez<br>";
+                                } else {
+                                    echo "Lo has intentado: " . $t4 . " veces<br>";
+                                }
+                                if ($w4 == 1) {
+                                    echo "Lo conseguiste: " . $w4 . " vez<br>";
+                                } else {
+                                    echo "Lo conseguiste: " . $w4 . " veces<br>";
+                                }
                             }
                             echo "</div>";
                         } else {
@@ -133,7 +163,51 @@
                 }
                 ?>
             </div>
-
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-white pt-5 mt-5">
+                <h4>Cambiar datos de perfil</h4>
+                <p>*Para visualizar los cambios deberá volver a iniciar sesión.</p>
+                <br>
+                <div class="container">
+                    <form id="cNombreFORM" method="post">
+                        <div class="row">
+                            <div id="errores"><br></div>
+                            <div class="col-4"><button type="submit" class="registro btn btn-primary" name="cNombreBTN" id="cNombreBTN">Cambiar nombre por</button></div>
+                            <div class="col-8"><input type="text" class="form-control" name="cNombre" id="cNombre" placeholder="Nickname" required></div>
+                        </div>
+                    </form><br>
+                    <form id="cMailFORM" method="post">
+                    <div class="row">
+                        <div class="col-4"><button type="submit" class="registro btn btn-primary" name="cMailBTN" id="cMailBTN">Cambiar E-Mail por</button></div>
+                        <div class="col-8"><input type="text" class="form-control" name="cMail" id="cMail" placeholder="E-Mail" required></div>
+                    </div>
+                    </form><br>
+                    <form id="cContraseñaFORM" method="post">
+                        <div class="row">
+                            <div class="col-4"><button type="submit" class="registro btn btn-primary" name="cContraseñaBTN" id="cContraseñaBTN">Cambiar contraseña</button></div>
+                            <div class="col-8"><input type="password" class="form-control" name="cContraseña" id="cContraseña" placeholder="Contraseña" required></div>
+                        </div><br>
+                        <div class="row">
+                            <div class="col-4"></div>
+                            <div class="col-8"><input type="password" class="form-control error" name="cContraseña2" id="cContraseña2" placeholder="Repetir contraseña" required></div>
+                        </div>
+                    </form>
+                </div>
+                <br>
+                <p>Requisitos mínimos para la contraseña:</p>
+                <div class="row text-end">
+                    <div class="col-6">
+                        <p>Mayúsculas: <span id="passMayus"><i class="fas fa-times-circle"></i></span></p>
+                        <p>Minúsculas: <span id="passMinus"><i class="fas fa-times-circle"></i></span></p>
+                    </div>
+                    <div class="col-3">
+                        <p>Números: <span id="passNum"><i class="fas fa-times-circle"></i></span></p>
+                        <p>10 caracteres: <span id="passChar"><i class="fas fa-times-circle"></i></span></p>
+                    </div>
+                    <div class="row text-center mt-5">
+                        <div class="col-12"><button type="submit" class="registro btn btn-danger" id="eliminar" data-bs-toggle='modal' data-bs-target='#exampleModal4'>Eliminar cuenta</button></div>
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -156,6 +230,107 @@
         </div>
     </div>
 
+    <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Eliminar cuenta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Estás seguro de que quieres eliminar la cuenta?</p>
+                </div>
+                <div class="modal-footer">
+                    <form id="eliminarFORM" method="post">
+                    <button type="submit" class="registro btn btn-danger" name="eliminarSeguro" id="eliminarSeguro">Eliminar cuenta</button>
+                    </form>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+    include "../BD/conexion.php";
+
+    if (mysqli_connect_errno()) {
+        echo 'Failed connection' . mysqli_connect_error(); //Fallo en conexión
+        exit();
+    } else {
+        $mail = $_SESSION["mail"];
+
+        if (isset($_POST['cNombreBTN'])) {
+            $name = $_POST['cNombre'];
+            $sql = "UPDATE usuarios set  name='$name' WHERE mail='$mail'";
+            if ($conn->query($sql) === TRUE) {
+                $_SESSION["nombre"] = $name;
+                $conn->close();
+                echo "<script type='text/javascript'>
+                        window.location.href='estadisticas.php';
+                        </script>";
+            } else {
+                echo "<script type='text/javascript'>
+                        document.getElementById('errores').innerHTML='<div class=error>Error. No se ha podido realizar la operación.</div>';
+                    </script>";
+            }
+        }
+
+        if (isset($_POST['cMailBTN'])) {
+            $newMail = $_POST['cMail'];
+            $sql = "UPDATE usuarios set  mail='$newMail' WHERE mail='$mail'";
+            if ($conn->query($sql) === TRUE) {
+                $_SESSION["mail"] = $newMail;
+                $conn->close();
+                echo "<script type='text/javascript'>
+                        window.location.href='estadisticas.php';
+                        </script>";
+            } else {
+                if (mysqli_errno($conn) == 1062) {
+                    // Controla que no pueda meterse un E-Mail que ya existe
+                    // mediante el error 1062 de clave primaria de la base de datos
+                    echo "<script type='text/javascript'>
+                        document.getElementById('errores').innerHTML='<div class=error>Error. Este E-Mail ya lo está usando otra persona</div>';
+                    </script>";
+                }else{
+                    echo "<script type='text/javascript'>
+                        document.getElementById('errores').innerHTML='<div class=error>Error. No se ha podido realizar la operación.</div>';
+                    </script>";
+                }
+            }
+        }
+
+        if (isset($_POST['cContraseñaBTN'])) {
+            $pass = $_POST['cContraseña'];
+            $sql = "UPDATE usuarios set  pass='$pass' WHERE mail='$mail'";
+            if ($conn->query($sql) === TRUE) {
+                $conn->close();
+                echo "<script type='text/javascript'>
+                        window.location.href='estadisticas.php';
+                        </script>";
+            } else {
+                echo "<script type='text/javascript'>
+                        document.getElementById('errores').innerHTML='<div class=error>Error. No se ha podido realizar la operación.</div>';
+                    </script>";
+            }
+        }
+
+        if (isset($_POST['eliminarSeguro'])) {
+            $sql = "DELETE FROM usuarios WHERE mail='$mail'";
+            if ($conn->query($sql) === TRUE) {
+                $conn->close();
+                $_SESSION["sesion_iniciada"] = false;
+                session_destroy();
+                echo "<script type='text/javascript'>
+                        window.location.href='../index.php';
+                        </script>";
+            } else {
+                echo "<script type='text/javascript'>
+                        document.getElementById('errores').innerHTML='<div class=error>Error. No se ha podido realizar la operación.</div>';
+                    </script>";
+            }
+        }
+        $conn->close();
+    }
+    ?>
 
     <footer class="container-fluid align-bottom mt-auto">
         <div class="container col-10">

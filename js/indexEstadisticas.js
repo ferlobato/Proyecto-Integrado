@@ -1,67 +1,58 @@
-// Autor: Fernando Lobato
-
-// Booleanas para comprobar la validez de todos los campos del formulario
-var nombreOk=false, emailOk=false, passOk=false, pass2Ok=false, Pass2Introducido=false;
-var checkNum=false, checkLength=false, checkMayus=false, checkMinus=false;
-
 window.onload=inicio;
-
 function inicio(){
     // Configuración inicial y eventos:
     //acceso();
-    document.getElementById("registro").disabled=true;
-    document.getElementById("rNombre").addEventListener('blur',validarTextoNom);
-    document.getElementById("rNombre").addEventListener('input',validarTextoNom);
-    document.getElementById("rMail").addEventListener('blur',validarMail);
-    document.getElementById("rContraseña").addEventListener('input',evaluarPass);
-    document.getElementById("rContraseña2").addEventListener('focus',evaluarPass2);
-    document.getElementById("rContraseña2").addEventListener('input',evaluarPass2);
-    
+    document.getElementById("cNombreBTN").disabled=true;
+    document.getElementById("cMailBTN").disabled=true;
+    document.getElementById("cContraseñaBTN").disabled=true;
+    document.getElementById("cNombre").addEventListener('blur',validarTextoNom);
+    document.getElementById("cNombre").addEventListener('input',validarTextoNom);
+    document.getElementById("cMail").addEventListener('blur',validarMail);
+    document.getElementById("cMail").addEventListener('input',validarMail);
+    document.getElementById("cContraseña").addEventListener('input',evaluarPass);
+    document.getElementById("cContraseña2").addEventListener('focus',evaluarPass2);
+    document.getElementById("cContraseña2").addEventListener('input',evaluarPass2);
 }
 
-/***************************************************
-                Funciones formulario
-***************************************************/
 function validarTextoNom(){
     if(this.value==''){
-        document.getElementById("errores").innerHTML="<div class='error'>No dejes el nick vacío</div>";
-        nombreOk=false;
-        this.classList.add('error');
-        this.focus();
+        document.getElementById("cNombreBTN").disabled=true;
     }else if(this.value.match(/^.*[\s]+.*$/)){
         document.getElementById("errores").innerHTML="<div class='error'>Tu nick no puede contener espacios</div>";
-        nombreOk=false;
+        document.getElementById("cNombreBTN").disabled=true;
         this.classList.add('error');
         this.focus();
     }else if(this.value.match(/^[\d]+$/)){
         document.getElementById("errores").innerHTML="<div class='error'>Tu nick no puede contener sólo números</div>";
-        nombreOk=false;
+        document.getElementById("cNombreBTN").disabled=true;
         this.classList.add('error');
         this.focus();
     }else{
         document.getElementById("errores").innerHTML="<br>";
         this.classList.remove('error');
-        nombreOk=true;
+        document.getElementById("cNombreBTN").disabled=false;
     }
-    evaluarTodo();
 }
 
 function validarMail(){
-    if(this.value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)){ 
-        /* (Cualquier sucesión de caracteres) + ["-" o "." 0 o 1 vez + (Cualquier sucesión de caracteres)] 0 o n veces +
-        carácter "@" + (Cualquier sucesión de caracteres) + ["-" o "." 0 o 1 vez + (Cualquier sucesión de caracteres)] 0 o n veces +       
-        carácter "." + 3 carácteres*/
+    if(this.value==''){
+        document.getElementById("cMailBTN").disabled=true;
         document.getElementById("errores").innerHTML="<br>";
         this.classList.remove('error');
-        emailOk=true;
+    }else if(this.value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)){
+        document.getElementById("errores").innerHTML="<br>";
+        this.classList.remove('error');
+        document.getElementById("cMailBTN").disabled=false;
     }else{
         document.getElementById("errores").innerHTML="<div class='error'>Dirección de correo inválida</div>";
         this.classList.add('error');
         this.focus();
-        emailOk=false;
+        document.getElementById("cMailBTN").disabled=true;
     }
-    evaluarTodo();
 }
+
+var checkNum=false, checkLength=false, checkMayus=false, checkMinus=false;
+var passOk=false, pass2Ok=false, Pass2Introducido=false;
 
 function evaluarPass(){
     var aInput = this.value.split("");
@@ -146,38 +137,23 @@ function evaluarPass(){
     if(Pass2Introducido){
         evaluarPass2();
     }
-    evaluarTodo();
 }
 
 function evaluarPass2(){ 
     Pass2Introducido=true;
-    if (document.getElementById("rContraseña2").value==document.getElementById("rContraseña").value) {
+    if (passOk && document.getElementById("cContraseña2").value==document.getElementById("cContraseña").value) {
         pass2Ok=true;
-        if(document.getElementById("rContraseña2").classList.contains('error')){
-            document.getElementById("rContraseña2").classList.remove('error');
+        document.getElementById("cContraseñaBTN").disabled=false;
+        if(document.getElementById("cContraseña2").classList.contains('error')){
+            document.getElementById("cContraseña2").classList.remove('error');
         }
-        document.getElementById("rContraseña2").classList.add('ok');
+        document.getElementById("cContraseña2").classList.add('ok');
     } else {
         pass2Ok=false;
-        if(document.getElementById("rContraseña2").classList.contains('ok')){
-            document.getElementById("rContraseña2").classList.remove('ok');
+        document.getElementById("cContraseñaBTN").disabled=true;
+        if(document.getElementById("cContraseña2").classList.contains('ok')){
+            document.getElementById("cContraseña2").classList.remove('ok');
         }
-        document.getElementById("rContraseña2").classList.add('error');
-    }
-    evaluarTodo();
-}
-
-function evaluarTodo(){ // Comprobando la validez de todos los campos
-    if(nombreOk && emailOk && passOk && pass2Ok){
-            document.getElementById("registro").disabled=false;
-        }else{
-            document.getElementById("registro").disabled=true;
+        document.getElementById("cContraseña2").classList.add('error');
     }
 }
-
-
-
-
-    
-
-

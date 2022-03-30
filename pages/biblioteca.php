@@ -34,7 +34,7 @@
                         <?php
                         if (isset($_SESSION['sesion_iniciada'])) {
                             echo "<p class='nav-link active text-white'>".$_SESSION["nombre"]."</p>";
-                            echo "<a class='nav-link text-white' href='estadisticas.php'>Estadísticas</a>
+                            echo "<a class='nav-link text-white' href='estadisticas.php'>Estadísticas y datos</a>
                             <a class='nav-link text-white' href='' data-bs-toggle='modal' data-bs-target='#exampleModal3'>Información</a>
                             <form action='' method='post'>
                             <input class='nav-link active text-white bg-dark border-0' type='submit' name='cierre' value='Cerrar Sesión' style='margin-left:10%'/></form>";
