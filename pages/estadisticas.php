@@ -1,6 +1,6 @@
+<?php session_start(); ?>
 <!doctype html>
 <html lang="en">
-<?php session_start(); ?>
 
 <head>
     <title>In Game Web</title>
@@ -40,12 +40,14 @@
                             if (isset($_POST['cierre'])) {
                                 $_SESSION["sesion_iniciada"] = false;
                                 session_destroy();
-                                header("Refresh:0");
+                                echo "<script type='text/javascript'>
+                                window.location.href='../index.php';
+                                </script>";
                             }
                         } else {
                             echo "<script type='text/javascript'>
-                        window.location.href='../index.php';
-                        </script>";
+                            window.location.href='../index.php';
+                            </script>";
                         }
                         ?>
                     </nav>
@@ -58,9 +60,13 @@
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-white">
                 <?php
+                include "../bd/conexion.php";
+                if (!$conn) {
+                    die("Conexion fallida: " . mysqli_connect_error());
+                }
                 if (isset($_SESSION['sesion_iniciada'])) {
                     echo "<div class='mb-0 pb-0'><h1 class='text-white'>" . $_SESSION["nombre"] . "</h1><span>" . $_SESSION["mail"] . "</span></div><br><h4 class='text-white ms-5'>Estadísticas</h4>";
-                    include "../bd/conexion.php";
+                    
 
                     if (mysqli_connect_errno()) {
                         echo 'Failed connection' . mysqli_connect_error(); //Fallo en conexión
@@ -158,9 +164,10 @@
                         }
                         echo "</td></tr>";
                         echo "</table>";
-                        $conn->close();
                     }
+                    
                 }
+                $conn->close();
                 ?>
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-white pt-5 mt-5">
@@ -250,8 +257,8 @@
         </div>
     </div>
     <?php
-    include "../BD/conexion.php";
-
+    //include "../BD/conexion.php";
+    $conn = mysqli_connect('localhost', 'id17937513_igwadmin', 's}x(R(=+Z6tw|31z', 'id17937513_igwusuarios');
     if (mysqli_connect_errno()) {
         echo 'Failed connection' . mysqli_connect_error(); //Fallo en conexión
         exit();

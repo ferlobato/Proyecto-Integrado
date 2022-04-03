@@ -1,7 +1,6 @@
+<?php session_start(); ?>
 <!doctype html>
 <html lang="en">
-<?php session_start(); ?>
-
 
 <head>
   <title>In Game Web</title>
@@ -189,7 +188,7 @@ if (isset($_SESSION['sesion_iniciada'])) {
           <h5 class="modal-title" id="exampleModalLabel">Registro</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form id="fRegistro" class="needs-validation" action="index.php" method="post">
+        <form id="fRegistro" class="needs-validation" novalidate action="index.php" method="post">
           <div class="modal-body">
             <div class="container">
               <div class="row">
@@ -224,7 +223,7 @@ if (isset($_SESSION['sesion_iniciada'])) {
                   $pass = $_POST['rContraseña'];
 
                   // Instrucción SQL de inserción
-                  $sql = "INSERT INTO usuarios (mail,pass,name,try,win,try2,win2,try3,win3)VALUES ('$mail','$pass','$name',0 ,0,0,0,0,0)";
+                  $sql = "INSERT INTO usuarios (mail,pass,name,try,win,try2,win2,try3,win3,try4,win4)VALUES ('$mail','$pass','$name',0 ,0,0,0,0,0,0,0)";
                   // Inserción y validación
                   if ($conn->query($sql) === TRUE) {
                     // Inicio de sesión y redireccionamiento
@@ -242,7 +241,7 @@ if (isset($_SESSION['sesion_iniciada'])) {
                       echo ("<script type='text/javascript'>$(window).on('load', function() {
                                 $('#exampleModal2').modal('show');});</script>");
                     }
-                    // echo mysqli_errno($conn) . ": " . mysqli_error($conn). "\n"; // Debug de errores
+                     //echo mysqli_errno($conn) . ": " . mysqli_error($conn). "\n"; // Debug de errores
                   }
                 }
                 $conn->close();

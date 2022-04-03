@@ -1,6 +1,6 @@
+<?php session_start(); ?>
 <!doctype html>
 <html lang="en">
-<?php session_start(); ?>
 
 <head>
     <title>In Game Web</title>
@@ -41,12 +41,14 @@
                             if (isset($_POST['cierre'])) {
                                 $_SESSION["sesion_iniciada"] = false;
                                 session_destroy();
-                                header("Refresh:0");
+                                echo "<script type='text/javascript'>
+                                window.location.href='../index.php';
+                                </script>";
                             }
                         } else {
                             echo "<script type='text/javascript'>
-                        window.location.href='../index.php';
-                        </script>";
+                            window.location.href='../index.php';
+                            </script>";
                         }
                         ?>
                     </nav>

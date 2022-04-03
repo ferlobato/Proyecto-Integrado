@@ -1,6 +1,6 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en-us">
-<?php session_start(); ?>
 
 <head>
   <title>In Game Web | Arkanoid</title>
