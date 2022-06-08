@@ -172,7 +172,6 @@
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-white pt-5 mt-5">
                 <h4>Cambiar datos de perfil</h4>
-                <p>*Para visualizar los cambios deberá volver a iniciar sesión.</p>
                 <br>
                 <div class="container">
                     <form id="cNombreFORM" method="post">
@@ -257,8 +256,7 @@
         </div>
     </div>
     <?php
-    //include "../BD/conexion.php";
-    $conn = mysqli_connect('localhost', 'id17937513_igwadmin', 's}x(R(=+Z6tw|31z', 'id17937513_igwusuarios');
+    include "../BD/conexion.php";
     if (mysqli_connect_errno()) {
         echo 'Failed connection' . mysqli_connect_error(); //Fallo en conexión
         exit();
